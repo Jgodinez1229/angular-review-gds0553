@@ -1,39 +1,47 @@
-<form [formGroup]="registerForm">
-    <p-card header="Registra Miembro" [style]="{width:'360px'}">
-        <div class="field">
-            <input type="text" pInputText formControlName="fullname" 
-            placeholder="Nombre completo" class="w-full"/>
-        </div>
-        <small *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)" class="block p-error">
-            <div *ngIf="fullname.hasError('required')">Ingresar nombre completo</div>
-        </small>
-        <div class="field">
-            <input type="text" pInputText formControlName="email" 
-            placeholder="Ingresar email" class="w-full"/>
-        </div>
-        <small *ngIf="email.invalid && (email.dirty || email.touched)" class="block p-error">
-            <div *ngIf="email.hasError('required')">Ingresar email</div>
-            <div *ngIf="email.hasError('email')">Email Incorrecto</div>
-        </small>
-    
-        <div class="field">
-            <p-password 
-            formControlName = "confirmPassword"
-            name = "pass" placeholder="Ingresar contraseña"
-            [toggleMask]="true" styleClass="w-full" ></p-password>
-        </div>
-        <div class="field">
-            <p-password 
-            formControlName = "confirmPassword"
-            name = "pass" placeholder="Confirmar contraseña"
-            [toggleMask]="true" styleClass="w-full" ></p-password>
-        </div>
-        <div class="field">
-            <p-button label="Registrar" severity="success" styleClass="w-full" ></p-button>
-        </div>
+<form [formGroup]="registerForm" (ngSubmit)="enviarUsuario()">
+    <p-card header="Ingresar al sistema" [style]="{ width: '360px' }">
+      <div class="field"> Nombre
+        <input
+          type="text"
+          pInputText
+          formControlName="fullname"
+          placeholder="Nombre Completo"
+          class="w-full"
+        /> 
+      </div> Tu Email
+      <small *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)" class="block p-error">
+          <div *ngIf="fullname.hasError('reuired')">
+              Ingresa E-mail
+          </div>
+      </small>
+      <div class="field">
+        <input
+          type="text"
+          pInputText
+          formControlName="email"
+          placeholder="Ingresar E-mail"
+          class="w-full"
+        />
+      </div>
+      <small *ngIf="email.invalid && (email.dirty || email.touched)" class="block p-error">
+          <div *ngIf="email.hasError('reuired')">
+              Ingresa e-mail
+          </div>
+          <div *ngIf="email.hasError('email')">
+              email incorrecto
+          </div>
+      </small>
+      <div class="field"> Contraseña
+        <p-password formControlName="password" [toggleMask]="true" styleClass="w-full"></p-password>
+        
+      </div>
+      <div class="field"> Confirma Contraseña
+        <p-password formControlName="confirmPassword" [toggleMask]="true" styleClass="w-full"></p-password>
+      </div>
+        <p-button type="ngSubmit" label="Registrar" styleClass="w-full"></p-button>
         <div class="mt-2">
-            ¿Tienes cuenta? <a routerLink="/register">Registrar</a>
+        <a routerLink="/login">Iniciar Sesión</a>
         </div>
     </p-card>
-</form>
+  </form>
 

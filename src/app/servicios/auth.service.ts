@@ -15,7 +15,7 @@ export class AuthService {
       return this.http.post(`${this.baseUrl}users`, usuario);
     }
     getUserByEmail(correo: string):Observable<User[]>{
-      return this.http.get <User[]>(`${this.baseUrl}/users?email=${correo}`);
+      return this.http.get <User[]>(`${this.baseUrl}users?email=${correo}`);
     }
    }
    
